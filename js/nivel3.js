@@ -124,6 +124,9 @@
 //       variable llamada nuestroTitulo.
 //       Utilizá console.log para ver lo que obtuviste!
 
+const nuestroTitulo = document.querySelector("h1");
+console.log(nuestroTitulo);
+console.log(nuestroTitulo.innerText = "Hola!!!");
 
 
 
@@ -146,31 +149,37 @@
 
 // TAREA: Obtené todos los elementos <li> de la página en una variable llamada mediaLinks.
 
+const mediaLinks = document.querySelectorAll("li");
+console.log(mediaLinks);
 
 
+
+function numeroRandom() {
+    setInterval(function () {
+        nuestroTitulo.innerText = String(Math.random())
+    }, 1000)
+}
 
 
 
 // TAREA: Ahora utilizá console.log para ver la cantidad de 
 // elementos li que hay con mediaLinks.length
 
-
-
-
+console.log("Tamaño de mediaLinks: " + mediaLinks.length);
 
 
 // TAREA: ¿Te acordás de los bucles del nivel 2? Usando lo que sabés de ellos, realizá iteraciones
 //      sobre cada item de mediaLinks y mostralos en pantalla con console.log
 
-
-
-
+for (let i = 0; i < mediaLinks.length; i++) {
+    console.log(mediaLinks[i].innerText);
+}
 
 
 /*
     Propiedades de los elementos
     ==================
-    
+
     Ok, hasta acá todo bien. Peeeroo, ¿que pasa si queremos obtener SOLO el texto
     de nuestra etiqueta 'h1'?
     Los elementos de página tienen una propiedad para esto: '.textContent'.
@@ -185,7 +194,7 @@
 // y utilizá console.log para mostrarlo.
 
 
-
+console.log("El titulo es : " + nuestroTitulo.textContent);
 
 
 
@@ -193,7 +202,7 @@
     Editar el contenido de la página
     ====================
 
-    Podemos simplemente cambiar el contenido de las étiquetas utilizando la propiedad que 
+    Podemos simplemente cambiar el contenido de las étiquetas utilizando la propiedad que
     vimos recién, '.textContent'.
 
     Ejemplo:
@@ -205,14 +214,14 @@
 
 // TAREA: Hagamos un nuevo título! Cambiá el contenido de nuestro 'h1' y ponele lo que quieras.
 
-
+nuestroTitulo.textContent = "Chau mundo!!!!!";
 
 
 
 /*
     Editando atributos
     ==================
-    
+
     También podemos cambiar y establecer atributos en nuestros elementos.
 
     Ejemplo:
@@ -223,6 +232,8 @@
 
 // TAREA: Actualizá el valor del atributo 'src' de nuestra etiqueta 'img' a "img/kittens.jpeg".
 
+const imagenPrincipal = document.querySelector("img");
+imagenPrincipal.src = "img/kittens.jpeg";
 
 
 
@@ -248,7 +259,7 @@
 
 // Tarea: Obtené cualquier elemento de la página y cambiale algunos estilos.
 
-
+nuestroTitulo.style.backgroundColor = "yellow";
 
 
 
@@ -272,11 +283,19 @@
     nodoPagina.appendChild(nuevoParrafo);
 */
 
-// Tarea: Todavía seguís teniendo a los gatitos en tu pantalla? A mí me gusta el logo y los gatitos.
-//       Creá una nueva imagen con nuestro logo como fuente, y ponela
-//       en nuestra cabecera.
-//
+// Tarea: Todavía seguís teniendo a los gatitos en tu pantalla? A mí me gusta el logo y 
+// los gatitos.  woman_bw.jpg
+// Creá una nueva imagen con nuestro logo como fuente, y ponela
+// en nuestra cabecera.
+
 // P.S. También les podés dar estilos al nuevo nodo que creaste.
+
+
+const nodoCabecera = document.querySelector("header");
+const nuevaImagen = document.createElement("img")
+nuevaImagen.src = "img/woman_bw.jpg";
+nodoCabecera.appendChild(nuevaImagen);
+
 
 
 
@@ -288,3 +307,20 @@
 // Levántate, estira las piernas y celebra tu logro.                      //
 // ¡Creo que esto amerita un festejo!                                     //
 ////////////////////////////////////////////////////////////////////////////
+
+
+
+
+const $botonIngreso = document.querySelector("#ingresar");
+
+$botonIngreso.onclick = function (evento) {
+    const edadUsuario = Number(document.querySelector("#edad-usuario").value);
+    let textoResultado = "a";
+    if (edadUsuario >= 18) {
+        textoResultado = "Puedes ingresar";
+    } else {
+        textoResultado = "No puedes ingresar";
+    }
+    document.querySelector("#resultado").innerText = textoResultado;
+    return false;
+}
