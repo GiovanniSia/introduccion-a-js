@@ -23,13 +23,12 @@ $botonCalcular.onclick = function()
 // en una caja de texto deshabilitada. --> <input type="text" disabled id="salario-mensual"/>
 
 const $botonCalcular = document.querySelector("#boton-calcular");
-
 $botonCalcular.onclick = function () {
-  const salarioAnual = document.querySelector("#salario-anual").value;
-  alert(salarioAnual)
-  const mesesDelAnio = 12;
-  let salarioMensual = salarioAnual / mesesDelAnio;
-  document.querySelector("#salario-mensual").value = salarioMensual;
+  const $inputSalarioAnual = document.querySelector("#input-salario").value;
+  let salarioMensual = $inputSalarioAnual / 12;
+  const $inputSalarioMensual = document.querySelector("#input-salario-mensual");
+  console.log(salarioMensual)
+  $inputSalarioMensual.value = salarioMensual
   return false;
 }
 
@@ -39,6 +38,17 @@ $botonCalcular.onclick = function () {
 // vas a crear un botón de acción que una vez que lo apretás, va a
 // mostrar toda la información junta en un campo de texto
 // Y va a cambiar el <h1> para decir "Bienvenido, nombreDeUsuario"!
+
+const primerNombre = prompt("Ingrese su primer nombre:")
+const segundoNombre = prompt("Ingrese su segundo nombre:")
+const apellido = prompt("Ingrese su apellido:")
+//document.querySelector("#titulo").textContent += primerNombre + " " + segundoNombre + " " + apellido;
+if (!Boolean(primerNombre) || !Boolean(segundoNombre) || !Boolean(apellido)) {
+  document.querySelector("#titulo").textContent += "Juancito"
+} else {
+  document.querySelector("#titulo").textContent += `${primerNombre} ${segundoNombre} ${apellido}`
+}
+
 
 /*
 Ejemplo form:
